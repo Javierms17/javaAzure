@@ -23,7 +23,7 @@ public class OperationController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    /*@GetMapping("/calculate/{pos}")
+    @GetMapping("/calculate/{pos}")
     public ResponseEntity<Integer> calculate(@PathVariable int pos){
 
         if (pos < 0) {
@@ -49,6 +49,6 @@ public class OperationController {
 
         return new ResponseEntity<>(fibActual, HttpStatus.OK);
     }
-*/
+
 
 }

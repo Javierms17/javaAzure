@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9aeab44-c7ca-408a-a069-33c9ac823d45" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/crudazure/javaazure/controller/OperationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/crudazure/javaazure/controller/OperationController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +91,7 @@
       <option name="presentableId" value="Default" />
       <updated>1701121816421</updated>
       <workItem from="1701121817432" duration="9678000" />
-      <workItem from="1701137845123" duration="2328000" />
+      <workItem from="1701137845123" duration="2658000" />
     </task>
     <servers />
   </component>
