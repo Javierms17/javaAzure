@@ -17,6 +17,12 @@ public class OperationController {
     @Autowired
     private IOperationService iOperationService;
 
+    @GetMapping("/top10")
+    public ResponseEntity<List<Operation>> getTop10Operations() {
+        List<Operation> top10Operations = iOperationService.findTop10Operations();
+        return new ResponseEntity<>(top10Operations, HttpStatus.OK);
+    }
+
     @GetMapping("/list")
     public ResponseEntity<List<Operation>> list(){
         var result = iOperationService.findAll();

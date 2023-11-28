@@ -48,6 +48,12 @@ public class OperationService implements IOperationService {
     }
 
     @Override
+    public List<Operation> findTop10Operations() {
+        // Puedes implementar lógica para obtener las 10 operaciones más consultadas
+        // Aquí asumiré que simplemente se devuelven todas las operaciones ordenadas por count de forma descendente.
+        return iOperationRepository.findTop10ByOrderByCountDesc();
+    }
+    @Override
     public int update(Operation op) {
         int row;
         try {

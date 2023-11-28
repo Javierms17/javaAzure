@@ -42,4 +42,10 @@ public class OperationRepository implements IOperationRepository {
         String SQL = "UPDATE Operation SET pos=?, count=?,result=? WHERE id=?";
         return jdbcTemplate.update(SQL, new Object[]{op.getPos(), op.getCount(),op.getResult(),op.getId()});
     }
+
+    @Override
+    public List<Operation> findTop10ByOrderByCountDesc() {
+        String SQL = "SELECT TOP 10 * FROM Operation ORDER BY count DESC";
+        return jdbcTemplate.query(SQL, BeanPropertyRowMapper.newInstance(Operation.class));
+    }
 }

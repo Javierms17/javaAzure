@@ -10,5 +10,8 @@ public interface IOperationService {
    public Operation findByPos(int pos);
 
     public int save(Operation op);
+
+    List<Operation> findTop10Operations();
+
     public int update(Operation op);
 }

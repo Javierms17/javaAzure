@@ -12,4 +12,6 @@ public interface IOperationRepository {
 
     public int save(Operation op);
     public int update(Operation op);
+
+    List<Operation> findTop10ByOrderByCountDesc();
 }
