@@ -24,18 +24,18 @@ public class OperationController {
     }
 
     @GetMapping("/calculate/{pos}")
-    public int calculate(@PathVariable int pos){
+    public ResponseEntity<Integer> calculate(@PathVariable int pos){
 
         if (pos < 0) {
-            throw new IllegalArgumentException("La posición debe ser un número no negativo");
+            return new ResponseEntity<>(0, HttpStatus.OK);
         }
 
         if (pos == 0) {
-            return 0;
+          return  new ResponseEntity<>(0, HttpStatus.OK);
         }
 
         if (pos == 1) {
-            return 1;
+            return new ResponseEntity<>(1, HttpStatus.OK);
         }
 
         int fibAnterior = 0;
@@ -47,7 +47,7 @@ public class OperationController {
             fibAnterior = temp;
         }
 
-        return fibActual;
+        return new ResponseEntity<>(fibActual, HttpStatus.OK);
     }
 
 
