@@ -5,10 +5,7 @@ import com.crudazure.javaazure.service.IOperationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,6 +21,33 @@ public class OperationController {
     public ResponseEntity<List<Operation>> list(){
         var result = iOperationService.findAll();
         return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @GetMapping("/calculate/{pos}")
+    public int calculate(@PathVariable int pos){
+
+        if (pos < 0) {
+            throw new IllegalArgumentException("La posición debe ser un número no negativo");
+        }
+
+        if (pos == 0) {
+            return 0;
+        }
+
+        if (pos == 1) {
+            return 1;
+        }
+
+        int fibAnterior = 0;
+        int fibActual = 1;
+
+        for (int i = 2; i <= pos; i++) {
+            int temp = fibActual;
+            fibActual = fibAnterior + fibActual;
+            fibAnterior = temp;
+        }
+
+        return fibActual;
     }
 
 
