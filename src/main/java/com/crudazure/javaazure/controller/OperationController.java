@@ -23,6 +23,12 @@ public class OperationController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
+    @GetMapping("/getbypos/{pos}")
+    public ResponseEntity<Operation> getopbyid(@PathVariable int pos){
+        var result = iOperationService.findByPos(pos);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
     @GetMapping("/calculate/{pos}")
     public ResponseEntity<Integer> calculate(@PathVariable int pos){
 
@@ -31,10 +37,36 @@ public class OperationController {
         }
 
         if (pos == 0) {
+            var op = iOperationService.findByPos(pos);
+
+            if(op==null){
+
+                Operation opn = new Operation();
+                opn.setPos(pos);
+                opn.setCount(1);
+                opn.setResult(0);
+                int nueva= iOperationService.save(opn);
+            }else{
+                op.setCount(op.getCount() + 1);
+                int exist = iOperationService.update(op);
+            }
           return  new ResponseEntity<>(0, HttpStatus.OK);
         }
 
         if (pos == 1) {
+            var op = iOperationService.findByPos(pos);
+
+            if(op==null){
+
+                Operation opn = new Operation();
+                opn.setPos(pos);
+                opn.setCount(1);
+                opn.setResult(1);
+                int nueva= iOperationService.save(opn);
+            }else{
+                op.setCount(op.getCount() + 1);
+                int exist = iOperationService.update(op);
+            }
             return new ResponseEntity<>(1, HttpStatus.OK);
         }
 
@@ -46,7 +78,22 @@ public class OperationController {
             fibActual = fibAnterior + fibActual;
             fibAnterior = temp;
         }
+        if(pos>=0){
 
+            var op = iOperationService.findByPos(pos);
+
+           if(op==null){
+
+               Operation opn = new Operation();
+               opn.setPos(pos);
+               opn.setCount(1);
+               opn.setResult(fibActual);
+               int nueva= iOperationService.save(opn);
+           }else{
+                   op.setCount(op.getCount() + 1);
+                   int exist = iOperationService.update(op);
+           }
+        }
         return new ResponseEntity<>(fibActual, HttpStatus.OK);
     }
 

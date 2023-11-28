@@ -6,6 +6,9 @@ import java.util.List;
 
 public interface IOperationService {
     public List<Operation> findAll();
+
+   public Operation findByPos(int pos);
+
     public int save(Operation op);
     public int update(Operation op);
 }

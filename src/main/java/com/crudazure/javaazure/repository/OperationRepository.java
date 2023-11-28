@@ -1,4 +1,6 @@
 package com.crudazure.javaazure.repository;
+import org.springframework.dao.EmptyResultDataAccessException;
+
 
 import com.crudazure.javaazure.model.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,18 @@ public class OperationRepository implements IOperationRepository {
     public List<Operation> findAll() {
         String SQL = "SELECT * FROM Operation";
         return jdbcTemplate.query(SQL, BeanPropertyRowMapper.newInstance(Operation.class));
+    }
+
+
+    @Override
+    public Operation findByPos(int pos) {
+        String SQL = "SELECT * FROM Operation WHERE pos = ?";
+        try {
+            return jdbcTemplate.queryForObject(SQL, BeanPropertyRowMapper.newInstance(Operation.class), pos);
+        } catch (EmptyResultDataAccessException e) {
+            // Devuelve null si no se encuentra ningún resultado
+            return null;
+        }
     }
 
     @Override

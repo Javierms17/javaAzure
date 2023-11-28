@@ -25,6 +25,17 @@ public class OperationService implements IOperationService {
     }
 
     @Override
+    public Operation findByPos(int pos) {
+        Operation op;
+        try{
+            op= iOperationRepository.findByPos(pos);
+        } catch (Exception e) {
+            throw e;
+        }
+        return  op;
+    }
+
+    @Override
     public int save(Operation op) {
         int row;
         try{
